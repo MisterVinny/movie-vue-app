@@ -45,14 +45,15 @@
           placeholder="director"
         />
       </div>
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label>English: </label>
         <input
           type="checkbox"
           class="form-control"
           v-model="newMovieParams.english"
+          value="false"
         />
-      </div>
+      </div> -->
 
       <input type="submit" class="btn btn-primary" value="Submit" />
     </form>

@@ -40,14 +40,15 @@
           v-model="editMovieParams.director"
         />
       </div>
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label>English: </label>
         <input
           type="checkbox"
           class="form-control"
           v-model="editMovieParams.english"
+          value="true"
         />
-      </div>
+      </div> -->
     </form>
     <router-link :to="`/movies/${editMovieParams.id}`">
       Return to Movie View
