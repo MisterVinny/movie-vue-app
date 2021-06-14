@@ -1,7 +1,7 @@
 <template>
   <div class="movies-edit">
     <form v-on:submit.prevent="editPost()">
-      <h1>Edit Move</h1>
+      <h1>Edit Movie</h1>
       <ul>
         <li class="text-danger" v-for="error in errors" v-bind:key="error">
           {{ error }}
