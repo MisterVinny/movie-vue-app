@@ -4,9 +4,10 @@ import Home from "../views/Home.vue";
 import Signup from "../views/Signup.vue";
 import Login from "../views/Login.vue";
 import Logout from "../views/Logout.vue";
-import MoviesIndex from "../views/movies/Index.vue"
-import MoviesShow from "../views/movies/Show.vue"
-import MoviesEdit from "../views/movies/Edit.vue"
+import MoviesIndex from "../views/movies/Index.vue";
+import MoviesShow from "../views/movies/Show.vue";
+import MoviesEdit from "../views/movies/Edit.vue";
+import MoviesNew from "../views/movies/New.vue";
 
 Vue.use(VueRouter);
 
@@ -44,6 +45,11 @@ const routes = [
     path: "/movies",
     name: "movies-index",
     component: MoviesIndex,
+  },
+  {
+    path: "/movies/new",
+    name: "movies-new",
+    component: MoviesNew,
   },
   {
     path: "/movies/:id",
