@@ -31,11 +31,19 @@
         <label>Plot: </label>
         <input
           type="text"
+          maxlength="500"
           class="form-control"
           v-model="newMovieParams.plot"
           placeholder="plot"
         />
       </div>
+      <small class="danger-text" v-if="newMovieParams.plot.length < 15"
+        >Plot must be 15 to 500 characters in length.</small
+      >
+      <small v-if="newMovieParams.plot.length >= 15"
+        >{{ 500 - newMovieParams.plot.length }} characters remaining of
+        500.</small
+      >
       <div class="form-group">
         <label>Director: </label>
         <input
@@ -64,6 +72,10 @@
 p b {
   font-size: 1em;
 }
+
+div .danger-text {
+  color: darkred;
+}
 </style>
 
 <script>
@@ -71,7 +83,9 @@ import axios from "axios";
 export default {
   data: function () {
     return {
-      newMovieParams: {},
+      newMovieParams: {
+        plot: "",
+      },
       errors: [],
     };
   },

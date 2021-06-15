@@ -2,11 +2,15 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/signup">Signup</router-link> |
-      <router-link to="/login">Login</router-link> |
-      <router-link to="/logout">Logout</router-link> |
       <router-link to="/movies">Movies</router-link> |
-      <router-link to="/movies/new">Create New Movie</router-link>
+      <router-link to="/movies/new">Create New Movie</router-link> |
+      <span v-if="isLoggedIn()">
+        <router-link to="/logout">Logout</router-link>
+      </span>
+      <span v-else>
+        <router-link to="/signup">Signup</router-link> |
+        <router-link to="/login">Login</router-link>
+      </span>
     </div>
     <router-view />
   </div>
@@ -32,5 +36,22 @@
 
 #nav a.router-link-exact-active {
   color: #42b983;
+  font-size: 1.5em;
 }
 </style>
+
+<script>
+export default {
+  data: function () {
+    return {};
+  },
+
+  created: function () {},
+
+  methods: {
+    isLoggedIn: function () {
+      return localStorage.getItem("jwt");
+    },
+  },
+};
+</script>

@@ -1,8 +1,23 @@
 <template>
   <div class="movies-index">
     <h1>The Movie Bin</h1>
+    <p>
+      Filter by:
+      <input
+        v-model="titleFilter"
+        type="text"
+        placeholder="title filter text"
+      />
+    </p>
+    <span v-if="filterBy(movies, titleFilter, 'title').length == 0">
+      No Results.
+    </span>
+    <hr />
 
-    <div v-for="movie in movies" v-bind:key="movie.id">
+    <div
+      v-for="movie in filterBy(movies, titleFilter, 'title')"
+      v-bind:key="movie.id"
+    >
       <p><b>Title: </b>{{ movie.title }}</p>
       <p><b>Year: </b>{{ movie.year }}</p>
       <router-link :to="`/movies/${movie.id}`"> More Info </router-link>
@@ -19,10 +34,15 @@ p b {
 
 <script>
 import axios from "axios";
+import Vue2Filters from "vue2-filters";
+
 export default {
+  mixins: [Vue2Filters.mixin],
+
   data: function () {
     return {
       movies: [],
+      titleFilter: "",
     };
   },
 

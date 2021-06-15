@@ -6,7 +6,6 @@
       <p><b>Plot: </b>{{ movie.plot }}</p>
       <p><b>Director: </b>{{ movie.director }}</p>
       <p><b>English: </b>{{ movie.english }}</p>
-      <router-link :to="`/movies`"> Return to Movies </router-link> |
       <router-link :to="`/movies/${movie.id}/edit`"> Edit Movie </router-link>
     </div>
   </div>
