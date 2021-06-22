@@ -14,24 +14,37 @@
           type="text"
           class="form-control"
           v-model="editMovieParams.title"
+          autofocus
         />
       </div>
       <div class="form-group">
         <label>Year: </label>
         <input
-          type="text"
+          type="number"
           class="form-control"
           v-model="editMovieParams.year"
         />
       </div>
       <div class="form-group">
         <label>Plot: </label>
-        <input
+        <textarea
+          id="newMovieForm"
           type="text"
+          maxLength="500"
           class="form-control"
           v-model="editMovieParams.plot"
-        />
+          cols="30"
+          rows="20"
+          placeholder="plot"
+        ></textarea>
       </div>
+      <small class="danger-text" v-if="editMovieParams.plot.length < 15"
+        >Plot must be 15 to 500 characters in length.</small
+      >
+      <small v-if="editMovieParams.plot.length >= 15"
+        >{{ 500 - editMovieParams.plot.length }} characters remaining of
+        500.</small
+      >
       <div class="form-group">
         <label>Director: </label>
         <input
@@ -40,7 +53,7 @@
           v-model="editMovieParams.director"
         />
       </div>
-      <!-- <div class="form-group">
+      <div class="form-group">
         <label>English: </label>
         <input
           type="checkbox"
@@ -48,7 +61,7 @@
           v-model="editMovieParams.english"
           value="true"
         />
-      </div> -->
+      </div>
     </form>
     <router-link :to="`/movies/${editMovieParams.id}`">
       Return to Movie View

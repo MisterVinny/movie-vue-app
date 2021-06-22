@@ -1,6 +1,6 @@
 <template>
   <div class="movies-new">
-    <form v-on:submit.prevent="createMovie()">
+    <form v-on:submit.prevent="createMovie()" id="newMovieForm">
       <h1>Create New Movie</h1>
 
       <ul>
@@ -16,12 +16,13 @@
           class="form-control"
           v-model="newMovieParams.title"
           placeholder="title"
+          autofocus
         />
       </div>
       <div class="form-group">
         <label>Year: </label>
         <input
-          type="text"
+          type="number"
           class="form-control"
           v-model="newMovieParams.year"
           placeholder="year"
@@ -29,13 +30,16 @@
       </div>
       <div class="form-group">
         <label>Plot: </label>
-        <input
+        <textarea
+          id="newMovieForm"
           type="text"
-          maxlength="500"
+          maxLength="500"
           class="form-control"
           v-model="newMovieParams.plot"
+          cols="30"
+          rows="10"
           placeholder="plot"
-        />
+        ></textarea>
       </div>
       <small class="danger-text" v-if="newMovieParams.plot.length < 15"
         >Plot must be 15 to 500 characters in length.</small
@@ -44,6 +48,15 @@
         >{{ 500 - newMovieParams.plot.length }} characters remaining of
         500.</small
       >
+      <div class="form-group">
+        <label>English: </label>
+        <input
+          type="checkbox"
+          class="form-control"
+          v-model="newMovieParams.english"
+          value="true"
+        />
+      </div>
       <div class="form-group">
         <label>Director: </label>
         <input

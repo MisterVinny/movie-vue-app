@@ -7,6 +7,7 @@
         v-model="titleFilter"
         type="text"
         placeholder="title filter text"
+        autofocus
       />
     </p>
     <span v-if="filterBy(movies, titleFilter, 'title').length == 0">

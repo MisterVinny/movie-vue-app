@@ -6,6 +6,8 @@
       <p><b>Plot: </b>{{ movie.plot }}</p>
       <p><b>Director: </b>{{ movie.director }}</p>
       <p><b>English: </b>{{ movie.english }}</p>
+    </div>
+    <div v-if="this.$parent.isLoggedIn()"> 
       <router-link :to="`/movies/${movie.id}/edit`"> Edit Movie </router-link>
     </div>
   </div>
