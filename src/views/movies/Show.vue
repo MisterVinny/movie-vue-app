@@ -1,14 +1,20 @@
 <template>
   <div class="movies-show">
-    <div>
-      <h1>{{ movie.title }}</h1>
-      <p><b>Year: </b>{{ movie.year }}</p>
-      <p><b>Plot: </b>{{ movie.plot }}</p>
-      <p><b>Director: </b>{{ movie.director }}</p>
-      <p><b>English: </b>{{ movie.english }}</p>
-    </div>
-    <div v-if="this.$parent.isLoggedIn()"> 
-      <router-link :to="`/movies/${movie.id}/edit`"> Edit Movie </router-link>
+    <div class="d-flex justify-content-center">
+      <div>
+        <div>
+          <h1>{{ movie.title }}</h1>
+          <p><b>Year: </b>{{ movie.year }}</p>
+          <p><b>Plot: </b>{{ movie.plot }}</p>
+          <p><b>Director: </b>{{ movie.director }}</p>
+          <p><b>English: </b>{{ movie.english }}</p>
+        </div>
+        <div v-if="this.$parent.isLoggedIn()">
+          <router-link :to="`/movies/${movie.id}/edit`">
+            Edit Movie
+          </router-link>
+        </div>
+      </div>
     </div>
   </div>
 </template>

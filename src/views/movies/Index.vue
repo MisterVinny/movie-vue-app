@@ -71,7 +71,7 @@ export default {
     },
 
     returnShort: function (plot) {
-      return plot.substring(0, 25);
+      return plot.substring(0, 40);
     },
   },
 };

@@ -1,73 +1,82 @@
 <template>
   <div class="movies-edit">
-    <form v-on:submit.prevent="editPost()">
-      <h1>Edit Movie</h1>
-      <ul>
-        <li class="text-danger" v-for="error in errors" v-bind:key="error">
-          {{ error }}
-        </li>
-      </ul>
+    <div class="d-flex justify-content-center">
+      <div>
+        <form v-on:submit.prevent="editPost()">
+          <h1>Edit Movie</h1>
+          <ul>
+            <li class="text-danger" v-for="error in errors" v-bind:key="error">
+              {{ error }}
+            </li>
+          </ul>
 
-      <div class="form-group">
-        <label>Title: </label>
-        <input
-          type="text"
-          class="form-control"
-          v-model="editMovieParams.title"
-          autofocus
-        />
+          <div class="form-group">
+            <label>Title: </label>
+            <input
+              type="text"
+              class="form-control"
+              v-model="editMovieParams.title"
+              autofocus
+            />
+          </div>
+          <div class="form-group">
+            <label>Year: </label>
+            <input
+              type="number"
+              class="form-control"
+              v-model="editMovieParams.year"
+            />
+          </div>
+          <div class="form-group">
+            <label>Plot: </label>
+            <textarea
+              id="newMovieForm"
+              type="text"
+              maxLength="500"
+              class="form-control"
+              v-model="editMovieParams.plot"
+              cols="30"
+              rows="10"
+              placeholder="plot"
+            ></textarea>
+          </div>
+          <small class="danger-text" v-if="editMovieParams.plot.length < 15"
+            >Plot must be 15 to 500 characters in length.</small
+          >
+          <small v-if="editMovieParams.plot.length >= 15"
+            >{{ 500 - editMovieParams.plot.length }} characters remaining of
+            500.</small
+          >
+          <div class="form-group">
+            <label>Director: </label>
+            <input
+              type="text"
+              class="form-control"
+              v-model="editMovieParams.director"
+            />
+          </div>
+          <div class="form-group">
+            <div class="form-check">
+              <input
+                v-model="editMovieParams.english"
+                class="form-check-input"
+                type="checkbox"
+                value="true"
+                id="flexCheckDefault"
+              />
+              <label class="form-check-label" for="flexCheckDefault">
+                English
+              </label>
+            </div>
+          </div>
+        </form>
+        <router-link :to="`/movies/${editMovieParams.id}`">
+          Return to Movie View
+        </router-link>
+        | <button v-on:click="editMovie()">Submit Movie Update</button> |
+        <button v-on:click="deleteMovie()">Destroy This Movie</button>
       </div>
-      <div class="form-group">
-        <label>Year: </label>
-        <input
-          type="number"
-          class="form-control"
-          v-model="editMovieParams.year"
-        />
-      </div>
-      <div class="form-group">
-        <label>Plot: </label>
-        <textarea
-          id="newMovieForm"
-          type="text"
-          maxLength="500"
-          class="form-control"
-          v-model="editMovieParams.plot"
-          cols="30"
-          rows="20"
-          placeholder="plot"
-        ></textarea>
-      </div>
-      <small class="danger-text" v-if="editMovieParams.plot.length < 15"
-        >Plot must be 15 to 500 characters in length.</small
-      >
-      <small v-if="editMovieParams.plot.length >= 15"
-        >{{ 500 - editMovieParams.plot.length }} characters remaining of
-        500.</small
-      >
-      <div class="form-group">
-        <label>Director: </label>
-        <input
-          type="text"
-          class="form-control"
-          v-model="editMovieParams.director"
-        />
-      </div>
-      <div class="form-group">
-        <label>English: </label>
-        <input
-          type="checkbox"
-          class="form-control"
-          v-model="editMovieParams.english"
-          value="true"
-        />
-      </div>
-    </form>
-    <router-link :to="`/movies/${editMovieParams.id}`">
-      Return to Movie View
-    </router-link>
-    | <button v-on:click="editMovie()">Submit Movie Update</button> |
-    <button v-on:click="deleteMovie()">Destroy This Movie</button>
+    </div>
   </div>
 </template>
 
