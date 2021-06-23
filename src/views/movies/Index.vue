@@ -15,14 +15,24 @@
     </span>
     <hr />
 
-    <div
-      v-for="movie in filterBy(movies, titleFilter, 'title')"
-      v-bind:key="movie.id"
-    >
-      <p><b>Title: </b>{{ movie.title }}</p>
-      <p><b>Year: </b>{{ movie.year }}</p>
-      <router-link :to="`/movies/${movie.id}`"> More Info </router-link>
-      <hr />
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+      <div
+        v-for="movie in filterBy(movies, titleFilter, 'title')"
+        v-bind:key="movie.id"
+        class="col"
+      >
+        <div class="card h-100">
+          <!-- <img src="..." class="card-img-top" alt="..." /> -->
+          <div class="card-body">
+            <h5 class="card-title">{{ movie.title }}</h5>
+            <p class="card-text">{{ returnShort(movie.plot) }}</p>
+            <small class="text-muted">{{ movie.year }}</small>
+            <div class="card-footer">
+              <router-link :to="`/movies/${movie.id}`"> More Info </router-link>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -58,6 +68,10 @@ export default {
         this.movies = response.data;
         this.movies.sort((a, b) => a.id - b.id).reverse();
       });
+    },
+
+    returnShort: function (plot) {
+      return plot.substring(0, 25);
     },
   },
 };
