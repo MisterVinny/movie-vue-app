@@ -4,6 +4,7 @@
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
           <svg
+            id="svgIcon"
             xmlns="http://www.w3.org/2000/svg"
             width="32"
             height="32"
@@ -61,6 +62,9 @@
 </template>
 
 <style>
+#svgIcon {
+  color: black;
+}
 /* #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
